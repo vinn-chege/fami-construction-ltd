@@ -5,8 +5,7 @@
 Modern real estate property & integrated facilities management website for **Fami Construction Limited** (Westlands, Nairobi, Kenya).
 
 ## Live Website
-- **Netlify (Production):** https://fami-construction-ltd.netlify.app
-- **GitHub Pages:** https://vinn-chege.github.io/fami-construction-ltd/
+- **Netlify:** https://fami-construction-ltd.netlify.app
 
 ## Core Real Estate Services
 1. **Commercial, Estate & Post-Construction Cleaning (Soft FM)** — Resident cleaning stewards, high-rise facade glass washing, cabro pressure washing, sanitary bin care, and certified pest control.
