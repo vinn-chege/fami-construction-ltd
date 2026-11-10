@@ -42,10 +42,15 @@ html {
   color: var(--slate-800);
   background-color: var(--slate-50);
   line-height: 1.6;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -65,6 +70,27 @@ img {
   max-width: 1260px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* Prevent any CSS Grid or Flex item from blowing out mobile viewport width */
+.hero-grid > *,
+.services-grid > *,
+.sectors-grid > *,
+.why-grid > *,
+.contact-grid > *,
+.estimator-wrap > *,
+.footer-grid > *,
+.staff-inputs-grid > *,
+.option-pills > *,
+.deployment-cards > *,
+.compliance-badges > *,
+.form-row > *,
+.service-checklist > *,
+.hero-pillars-mini > *,
+.monolith-live-grid > *,
+.hero-trust-row > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Top Utility Bar */
@@ -1525,15 +1551,31 @@ img {
   color: rgba(255, 255, 255, 0.58);
 }
 
-/* Responsive */
-@media (max-width: 1040px) {
+.mobile-nav-ctas {
+  display: none;
+}
+
+/* Responsive Breakpoints (Tablet, Large Phone, Small Phone) */
+@media (max-width: 1080px) {
   .utility-inner {
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+  }
+  .utility-left,
+  .utility-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: normal;
   }
   .hero-grid,
   .estimator-wrap,
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+  .estimator-output {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
   .compliance-inner {
     flex-direction: column;
@@ -1557,46 +1599,249 @@ img {
   }
 }
 
-@media (max-width: 780px) {
-  .utility-bar {
-    display: none;
-  }
+@media (max-width: 960px) {
   .nav-links {
     display: none;
     position: absolute;
-    top: 82px;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--navy-950);
     flex-direction: column;
-    padding: 24px;
-    gap: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: stretch;
+    padding: 20px 24px 24px;
+    gap: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
   }
   .nav-links.open {
     display: flex;
   }
+  .nav-links li a {
+    display: block;
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+  .mobile-nav-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 12px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .nav-actions > .btn {
+    display: none;
+  }
   .mobile-menu-btn {
     display: inline-flex;
   }
+}
+
+@media (max-width: 780px) {
+  .container {
+    padding: 0 16px;
+  }
+  .utility-bar {
+    display: none;
+  }
+  .nav-inner {
+    height: 68px;
+    gap: 10px;
+  }
+  .brand-logo {
+    gap: 9px;
+    min-width: 0;
+  }
+  .brand-emblem-wrap {
+    width: 38px;
+    height: 42px;
+  }
+  .brand-title {
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+  }
+  .brand-motto {
+    font-size: 0.52rem;
+    letter-spacing: 0.06em;
+  }
+  .hero {
+    padding: 38px 0 50px;
+  }
+  .hero-grid {
+    gap: 30px;
+  }
+  .hero-eyebrow {
+    white-space: normal;
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    border-radius: 12px;
+    line-height: 1.35;
+  }
+  .hero h1 {
+    font-size: clamp(1.75rem, 7vw, 2.35rem);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero-lead {
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+  }
+  .hero-pillars-mini {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+  }
   .hero-trust-row {
     grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
+  .trust-metric strong {
+    font-size: 1.25rem;
+    white-space: normal;
+  }
+  .brand-monolith-card {
+    padding: 22px 16px;
+    border-radius: 20px;
+  }
+  .monolith-skyscraper {
+    height: 155px;
+  }
+  .monolith-brand-name {
+    font-size: 1.2rem;
+  }
+  .monolith-ribbon {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 8px 10px;
+  }
+  .monolith-live-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .section {
+    padding: 54px 0;
+  }
+  .section-header {
+    margin-bottom: 34px;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  .section-desc {
+    font-size: 0.94rem;
+  }
+  .services-filter-bar {
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+  .filter-tab {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+  .service-card {
+    padding: 22px 18px;
+  }
+  .service-card h3 {
+    font-size: 1.22rem;
+  }
+  .service-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .option-pills,
   .staff-inputs-grid,
   .compliance-badges,
   .services-grid,
   .sectors-grid,
   .why-grid,
   .form-row,
-  .service-checklist,
-  .hero-pillars-mini {
+  .service-checklist {
     grid-template-columns: 1fr;
+  }
+  .estimator-controls,
+  .estimator-output {
+    padding: 24px 16px;
+  }
+  .estimator-controls h3,
+  .output-title {
+    font-size: 1.25rem;
+  }
+  .control-label {
+    flex-wrap: wrap;
+    gap: 6px;
   }
   .unit-input-row {
     flex-direction: column;
     align-items: stretch;
   }
+  .unit-input-row .btn {
+    width: 100%;
+  }
+  .deployment-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .deploy-item {
+    padding: 12px;
+  }
+  .deploy-item strong {
+    font-size: 1.05rem;
+  }
+  .deploy-summary-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 8px 0;
+  }
+  .deploy-summary-list li strong {
+    text-align: left;
+    white-space: normal;
+  }
+  .why-card {
+    padding: 22px 18px;
+  }
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 24px 16px;
+  }
+  .contact-direct-item {
+    padding: 12px;
+  }
+  .contact-direct-item strong,
+  .contact-direct-item a {
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
   .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-title {
+    font-size: 0.82rem;
+  }
+  .brand-motto {
+    font-size: 0.48rem;
+  }
+  .deployment-cards {
     grid-template-columns: 1fr;
   }
 }
